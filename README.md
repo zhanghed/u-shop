@@ -9,6 +9,7 @@
 ## 添加微信小程序 appid：
 
 ```
+<!-- manifest.json -->
 "mp-weixin": {
 "appid": "",
 }
@@ -16,11 +17,11 @@
 
 ## 安装依赖：
 
-`pnpm i`
+`npm i`
 
 ## 运行调试(就是转微信小程序标准)：
 
-`pnpm run dev:mp-weixin`
+`npm run dev:mp-weixin`
 
 ## 小程序预览调试：
 
@@ -39,12 +40,12 @@
 
 ## sass
 
-`pnpm i sass -D`
+`npm i sass -D`
 
 ## pinia(注意版本兼容和持久化配置)
 
-`pnpm i pinia -S`
-`pnpm i pinia-plugin-persistedstate -S`
+`npm i pinia -S`
+`npm i pinia-plugin-persistedstate -S`
 
 ## uni-ui
 

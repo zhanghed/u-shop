@@ -1,12 +1,10 @@
 # u-shop
 
-# uniapp 小程序
-
-## 下载 uniapp 官方模板：
+## 下载 uniapp 官方模板
 
 `npx degit dcloudio/uni-preset-vue#vite 项目名`
 
-## 添加微信小程序 appid：
+## 添加微信小程序 appid
 
 ```
 <!-- manifest.json -->
@@ -15,15 +13,15 @@
 }
 ```
 
-## 安装依赖：
+## 安装依赖
 
 `npm i`
 
-## 运行调试(就是转微信小程序标准)：
+## 运行调试(就是转微信小程序标准)
 
 `npm run dev:mp-weixin`
 
-## 小程序预览调试：
+## 小程序预览调试
 
 `项目目录/dist/dev/mp-weixin 目录使用微信开发者工具打开`
 
@@ -38,34 +36,121 @@
 安装 uniapp 小程序扩展
 ```
 
-## sass
+## 构建界面
+
+### sass
 
 `npm i sass -D`
 
-## pinia(注意版本兼容和持久化配置)
+### uni-ui
+
+`npm i @dcloudio/uni-ui`
+
+```
+<!-- // pages.json 自动导入组件配置 -->
+// 组件自动引入规则
+	"easycom": {
+		// 是否开启自动扫描 @/components/$1/$1.vue 组件
+		"autoscan": true,
+		// 以正则方式自定义组件匹配规则
+		"custom": {
+			// uni-ui 规则如下配置
+			"^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue",
+			// 以 Co 开头的组件，在 components 目录中查找  自定义的
+			"^Co(.*)": "@/components/Co$1.vue"
+		}
+	}
+```
+
+## 状态管理
+
+### pinia
 
 `npm i pinia -S`
 `npm i pinia-plugin-persistedstate -S`
 
-## uni-ui
-
-`pnpm i @dcloudio/uni-ui`
+<!-- 注意版本兼容 -->
+`"vue": "^3.2.45","pinia": "^2.0.36",`
 
 ```
-// pages.json 自动导入组件配置
-{
-    // 组件自动导入
-    "easycom": {
-    "autoscan": true,
-    "custom": {
-            // uni-ui 规则如下配置
-            "^uni-(.\*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
-        }
-    },
+<!-- main.js -->
+import { createSSRApp } from "vue";
+import pinia from "./stores";
+
+import App from "./App.vue";
+export function createApp() {
+	const app = createSSRApp(App);
+
+	app.use(pinia);
+	return {
+		app,
+	};
 }
 ```
+```
+<!-- stores/index.js -->
+import { createPinia } from "pinia";
+import persist from "pinia-plugin-persistedstate";
 
-## uni.request 拦截器和请求封装
+// 创建 pinia 实例
+const pinia = createPinia();
+// 使用持久化存储插件
+pinia.use(persist);
+
+// 默认导出，给 main.ts 使用
+export default pinia;
+
+// 模块统一导出
+export * from "./member";
+```
+```
+<!-- stores/member.js -->
+import { defineStore } from "pinia";
+import { ref } from "vue";
+
+// 定义 Store
+export const useMemberStore = defineStore(
+  "member",
+  () => {
+    // 会员信息
+    const profile = ref();
+
+    // 保存会员信息，登录时使用
+    const setProfile = (val) => {
+      profile.value = val;
+    };
+
+    // 清理会员信息，退出时使用
+    const clearProfile = () => {
+      profile.value = undefined;
+    };
+
+    return {
+      profile,
+      setProfile,
+      clearProfile,
+    };
+  },
+  {
+    // 配置持久化
+    persist: {
+      // 兼容多端的API
+      storage: {
+        setItem(key, value) {
+          return uni.setStorageSync(key, value);
+        },
+        getItem(key) {
+          return uni.getStorageSync(key);
+        },
+      },
+    },
+  }
+);
+```
+
+## 数据交互
+
+### uni.request 拦截器和请求函数封装
 
 ```
 import { useMemberStore } from "@/stores";
@@ -142,4 +227,3 @@ export const http = (options) => {
 };
 
 ```
-

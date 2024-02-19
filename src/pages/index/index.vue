@@ -21,7 +21,7 @@ const getHomePanelData = async () => {
   panelList.value = res.result;
 };
 
-// 加载
+// 加载钩子
 onLoad(async () => {
   await Promise.all([
     getHomeBannerData(),

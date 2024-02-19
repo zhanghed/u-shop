@@ -84,7 +84,7 @@
 			// uni-ui 规则如下配置
 			"^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue",
 			// 以 Co 开头的组件，在 components 目录中查找  自定义的
-			"^Co(.*)": "@/components/Co$1.vue"
+			// "^Co(.*)": "@/components/Co$1.vue"
 		}
 	}
 }

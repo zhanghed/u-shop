@@ -4,7 +4,7 @@ import { onLoad } from "@dcloudio/uni-app";
 import Cnavbar from './components/Cnavbar.vue';
 import Cbanner from './components/Cbanner.vue';
 import Cpanel from './components/Cpanel.vue';
-import { getHomeBannerAPI, getHomePanelAPI, getHomeHotAPI } from "@/services/home";
+import { getHomeBannerAPI, getHomePanelAPI } from "@/services/home";
 
 // 轮播图
 const bannerList = ref();

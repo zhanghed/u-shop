@@ -1,15 +1,12 @@
 <script setup>
-
 </script>
 
 <template>
     <view class="content">
-        <!-- logo文字 -->
         <view class="logo">
             <image class="logo-image" src="@/static/images/logo.png"></image>
             <text class="logo-text">u-shop</text>
         </view>
-        <!-- 搜索条 -->
         <view class="search">
             <text class="icon-search">搜索</text>
             <text class="icon-scan"></text>

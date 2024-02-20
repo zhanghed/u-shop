@@ -4,14 +4,14 @@ import { onLoad } from "@dcloudio/uni-app";
 import Cnavbar from './components/Cnavbar.vue';
 import Cbanner from './components/Cbanner.vue';
 import Cpanel from './components/Cpanel.vue';
-import { getHomeBannerAPI, getHomePanelAPI } from "@/services/home";
+import Chot from './components/Chot.vue';
+import { getHomeBannerAPI, getHomePanelAPI, getHomeHotAPI } from "@/services/home";
 
 // 轮播图
 const bannerList = ref();
 const getHomeBannerData = async () => {
   const res = await getHomeBannerAPI();
   bannerList.value = res.result;
-  console.log(bannerList.value)
 };
 
 // 分类面板
@@ -21,11 +21,19 @@ const getHomePanelData = async () => {
   panelList.value = res.result;
 };
 
+// 热门推荐
+const hotList = ref();
+const getHomeHotData = async () => {
+  const res = await getHomeHotAPI();
+  hotList.value = res.result;
+};
+
 // 加载钩子
 onLoad(async () => {
   await Promise.all([
     getHomeBannerData(),
     getHomePanelData(),
+    getHomeHotData(),
   ]);
 });
 </script>
@@ -38,6 +46,8 @@ onLoad(async () => {
     <Cbanner :list="bannerList"></Cbanner>
     <!-- 分类面板 -->
     <Cpanel :list="panelList"></Cpanel>
+    <!-- 热门推荐 -->
+    <Chot :list="hotList"></Chot>
   </view>
 </template>
 

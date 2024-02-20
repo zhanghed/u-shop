@@ -19,14 +19,10 @@ export const getHomePanelAPI = () => {
   });
 };
 
-// src/services/home.ts
-/**
- * 猜你喜欢-小程序
- */
-export const getHomeGoodsGuessLikeAPI = (data) => {
+// 热门推荐
+export const getHomeHotAPI = () => {
   return http({
     method: "GET",
-    url: "/home/goods/guessLike",
-    data,
+    url: "/home/hot/mutli",
   });
 };

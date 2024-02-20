@@ -4,7 +4,6 @@ defineProps({ list: Array });
 
 <template>
   <view class="content">
-    <!-- <view class="item" v-for="item in list" :key="item.id"> -->
     <navigator hover-class="none" :url="`/pages/hot/hot?type=${item.type}`" class="navigator" v-for="item in list"
       :key="item.id">
       <view class="title">
@@ -14,7 +13,6 @@ defineProps({ list: Array });
       <image class="image" mode="aspectFill" :src="item.pictures[0]"></image>
     </navigator>
   </view>
-  <!-- </view> -->
 </template>
 
 <style lang="scss">
@@ -40,13 +38,13 @@ defineProps({ list: Array });
       margin-bottom: $uni-spacing-col-sm;
 
       .title-text {
-        font-size: $uni-font-size-lg;
+        font-size: $uni-font-size-base;
         color: $uni-text-color;
       }
 
       .title-desc {
         margin-left: $uni-spacing-col-sm;
-        font-size: $uni-font-size-base;
+        font-size: $uni-font-size-sm;
         color: $uni-text-color-grey;
       }
     }

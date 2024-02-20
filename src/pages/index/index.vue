@@ -74,7 +74,6 @@ onLoad(async () => {
       <Cnavbar></Cnavbar>
       <scroll-view class="scroll" scroll-y @scrolltolower="onScrolltolower" refresher-enabled
         @refresherrefresh="onRefresherrefresh" :refresher-triggered="isTriggered">
-        <!-- <view v-if="isLoading"></view> -->
         <!-- 轮播图 -->
         <Cbanner :list="bannerList"></Cbanner>
         <!-- 分类面板 -->

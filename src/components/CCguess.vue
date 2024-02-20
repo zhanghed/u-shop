@@ -8,7 +8,7 @@ const pageParams = {
   pageSize: 10,
 };
 
-// 获取猜你喜欢数据
+// 获取数据
 const finish = ref(false);
 let isGet = ref(true);//解决重复加载问题
 const getHomeGuessData = async () => {
@@ -28,7 +28,7 @@ const resetData = () => {
   finish.value = false;
 };
 
-// 组件挂载完毕
+// 挂载完毕
 onMounted(() => {
   getHomeGuessData();
 });
@@ -60,88 +60,57 @@ defineExpose({
 </template>
 
 <style lang="scss">
-:host {
-  display: block;
-}
-
-/* 分类标题 */
 .caption {
   display: flex;
   justify-content: center;
-  line-height: 1;
-  padding: 36rpx 0 40rpx;
-  font-size: 32rpx;
-  color: #333;
-  background-color: #f8f8f8;
+  margin-top: $uni-spacing-col-lg;
+  padding: $uni-spacing-col-lg;
+  font-size: $uni-font-size-lg;
+  color: $uni-text-color;
+  background-color: $uni-bg-color-grey;
 
   .text {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 28rpx 0 30rpx;
-
-    &::before,
-    &::after {
-      content: "";
-      width: 20rpx;
-      height: 20rpx;
-      background-size: contain;
-      margin: 0 10rpx;
-    }
   }
 }
 
-/* 猜你喜欢 */
 .guess {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  // padding: 0 20rpx;
-  background-color: #f8f8f8;
+  background-color: $uni-bg-color-grey;
 
   .guess-item {
-    width: 345rpx;
-    padding: 24rpx 20rpx 20rpx;
-    margin-bottom: 20rpx;
-    border-radius: 10rpx;
+    width: 49%;
+    padding: $uni-spacing-row-base;
+    margin-bottom: $uni-spacing-col-base;
     overflow: hidden;
-    background-color: #fff;
+    background-color: $uni-bg-color;
   }
 
   .image {
-    width: 304rpx;
-    height: 304rpx;
+    width: 100%;
+    height: 300rpx;
   }
 
   .name {
-    height: 75rpx;
-    margin: 10rpx 0;
-    font-size: 26rpx;
-    color: #333;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+    margin: $uni-spacing-col-base 0;
+    font-size: $uni-font-size-sm;
+    color: $uni-text-color;
   }
 
   .price {
-    line-height: 1;
-    padding-top: 4rpx;
-    color: #cf4444;
-    font-size: 26rpx;
-  }
-
-  .small {
-    font-size: 80%;
+    color: #dd524d;
+    font-size: $uni-font-size-sm;
   }
 }
 
-// 加载提示文字
 .loading-text {
   text-align: center;
-  font-size: 28rpx;
-  color: #999;
-  padding: 20rpx 0;
+  font-size: $uni-font-size-lg;
+  color: $uni-text-color-grey;
+  padding: $uni-spacing-col-lg 0;
 }
 </style>

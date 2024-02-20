@@ -1,4 +1,3 @@
-<!-- 骨架屏 需要在微信开发工具中生成 -->
 <template name="skeleton">
   <view class="sk-container">
     <view class="content content data-v-83a5a03c data-v-83a5a03c">

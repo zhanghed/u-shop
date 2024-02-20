@@ -15,7 +15,6 @@ defineProps({ list: Array });
 </template>
 
 <style lang="scss">
-/* 轮播图 */
 .content {
   height: 280rpx;
   margin-top: $uni-spacing-col-lg;

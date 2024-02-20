@@ -8,8 +8,7 @@
             <text class="logo-text">u-shop</text>
         </view>
         <view class="search">
-            <text class="icon-search">搜索</text>
-            <text class="icon-scan"></text>
+            <text class="search-text">搜索</text>
         </view>
     </view>
 </template>
@@ -18,17 +17,15 @@
 .content {
     width: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
 
     .logo {
-        width: 100%;
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
         align-items: center;
-        margin-top: $uni-spacing-col-lg;
 
         .logo-image {
             width: $uni-img-size-lg;
@@ -43,28 +40,21 @@
     }
 
     .search {
-        width: 100%;
+        width: 40%;
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
         border-radius: $uni-spacing-col-base;
-        color: $uni-text-color-grey;
-        font-size: $uni-font-size-base;
         background-color: $uni-bg-color-grey;
-        margin-top: $uni-spacing-col-lg;
-    }
-
-    .icon-search {
-        text-align: center;
-        padding: $uni-spacing-col-sm;
-    }
-
-    .icon-scan {
-        flex: 1;
-        text-align: center;
         margin-left: $uni-spacing-row-lg;
-    }
+        padding: $uni-spacing-col-sm;
 
+        .search-text {
+            color: $uni-text-color-grey;
+            font-size: $uni-font-size-sm;
+            text-align: center;
+        }
+    }
 }
 </style>

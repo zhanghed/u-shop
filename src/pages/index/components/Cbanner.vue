@@ -18,6 +18,7 @@ defineProps({ list: Array });
 /* 轮播图 */
 .content {
   height: 280rpx;
+  margin-top: $uni-spacing-col-lg;
   position: relative;
   overflow: hidden;
   transform: translateY(0);
